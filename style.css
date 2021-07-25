@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    min-width: 100vw;
+    font-family: 'Ruslan Display', cursive;
+    overflow-x: hidden;
+    background-color: #000000;
+}
+
+.nav{
+    background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding: 1rem 1.5rem;
+    padding-bottom: 0;
+}
+
+.allGames{
+    position: absolute;
+    left: 80px;
+    padding: 0.9rem;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    text-transform: uppercase;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    border-radius: 100vmax;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all ease-in-out 300ms;
+}
+
+.allGames:hover{
+    transform: scale(1.3);
+}
+
+.search{
+    width: 40vw;
+    position: relative;
+    display: flex;
+    /* justify-content: space-between; */
+    top: 15px;
+}
+
+.search i{
+    margin-left: 0.5rem;
+    position: relative;
+    font-size: 2rem;
+    color: white;
+    top: 6px;
+    right: 550px;
+}
+
+#search{
+    /* position: absolute; */
+    z-index: 11;
+    padding: 0.5rem 5rem;
+    text-align: center;
+    outline: none;
+    border: 1px solid white;
+    background-color: transparent;
+    border-radius: 10px;
+    font-family: inherit;
+    color: white;
+    font-size: 1.4rem;
+    
+}
+
+.nav h1{
+    font-size: 3rem;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 48%;
+}
+
+.categories{
+    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid black; */
+    margin-top: 3rem;
+}
+
+.category{
+    text-align: center;
+    padding: 0.3rem 3rem;
+    background: transparent;
+    border : none;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-width: 1px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    color: white;
+    font-size: 1.3rem;
+    /* font-weight: bold; */
+    font-family: inherit;
+}
+
+.category:hover{
+    background-color: white;
+    color: black;
+}
+
+.category.active{
+    background-color: white;
+    color: black;
+}
+
+
+.container{
+    /* border: 1px solid black; */
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    /* border: 1px solid whitesmoke; */
+    margin: 2rem 2.3rem;
+    width: 20%;
+    position: relative;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.5);
+}
+
+.card:hover .overview{
+    top: 0;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    /* background:content-box; */
+    transition: all ease-in-out 200ms;
+    /* object-fit: cover; */
+    object-fit: contain;
+}
+
+.card:hover img{
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.overview{
+    position: absolute;
+    top: 125%;
+    bottom: 0;
+    z-index: 1;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: all ease 300ms;
+}
+
+.overview .game-title{
+    padding: 0.8rem;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+}
+
+.overview .description{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    /* overflow: auto; */
+}
+
+.overview .publisher{
+    width: 100%;
+    text-align: center;
+}
+
+.overview .releaseDate{
+    width: 100%;
+    text-align: center;
+}
+
+.overview .releaseDate span{
+    font-size: 1.4rem;
+    color:white;
+}
+
+.overview a{
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 0.4rem 1rem;
+    position: relative;
+    transition: transform 200ms ease-in-out;
+}
+
+.overview a::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+}
+
+.overview a:hover{
+    transform: scale(1.1);
+    color: black;
+}
+
+.overview a:hover::after{
+    animation: animate linear forwards 400ms;
+}
+
+@keyframes animate {
+    0%{
+        right: 100%;
+    }
+    25%{
+        right: 75%;
+    }
+    50%{
+        right: 50%;
+    }
+    100%{
+        right: 0%;
+    }
+}
