@@ -6,12 +6,8 @@ let category;
 const catBtns = document.querySelectorAll(".category");
 let activeButton = null;
 
-getGames(Url);
-const KEY = process.env.API_KEY;
-console.log(KEY);
-
-async function getGames(Url) {
-  const resp = await fetch(Url, {
+const requestData = async (link) => {
+  const resp = await fetch(link, {
     method: "GET",
     headers: {
       "x-rapidapi-key": "afc6f0d2a3msh2d0df9a159b63e8p140fd9jsne40877285a0d",
@@ -20,6 +16,15 @@ async function getGames(Url) {
   });
 
   const data = await resp.json();
+  return data;
+};
+
+getGames(Url);
+// const KEY = process.env.API_KEY;
+// console.log("KEY");
+
+async function getGames(Url) {
+  const data = await requestData(Url);
 
   // console.log(data);
 
@@ -30,6 +35,7 @@ async function getGames(Url) {
 catBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     // btn.classList.remove('active');
+    // console.log("hello");
 
     let currBtn = e.target;
     currBtn.classList.add("active");
@@ -39,23 +45,15 @@ catBtns.forEach((btn) => {
     }
     activeButton = currBtn;
     category = activeButton.innerText;
+    console.log(category);
     getGamesByCategory(category);
-    // console.log(category);
   });
 });
 
 async function getGamesByCategory(category) {
   let catUrl = `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`;
 
-  const resp = await fetch(catUrl, {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": "afc6f0d2a3msh2d0df9a159b63e8p140fd9jsne40877285a0d",
-      "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
-    },
-  });
-
-  const respData = await resp.json();
+  const respData = await requestData(catUrl);
 
   // console.log(respData);
 
